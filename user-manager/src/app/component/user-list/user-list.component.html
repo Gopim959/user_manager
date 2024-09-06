@@ -1,0 +1,59 @@
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand">
+      <b class="text-white px-md-2 mt-7">
+        <span style="font-size: 34px;">
+          <i class="fas fa-user-circle"></i>
+        </span>
+        User Lists</b>
+    </a>
+  </nav>
+  
+  <!-- Container for search box and button -->
+  <div class="d-flex justify-content-end mt-3 me-3">
+    <div class="d-flex me-2">
+      <input class="form-control border-dark" type="search" placeholder="Search" aria-label="Search">
+    </div>
+  
+    <button class="btn btn-success">
+      <i class="fa-solid fa-plus"></i>
+      Add
+    </button>
+  </div>
+  
+  <div class="container mt-3">
+    <table class="table table-bordered" id="crudTable">
+      <thead>
+        <tr>
+          <th>img</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>DOB</th>
+          <th>Country</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+        <!-- <tr *ngFor="let i=index">
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.mobile }}</td>
+          <td>{{ emp.age }}</td>
+          <td>{{ emp.designation}}</td>
+          <td>{{ emp.email }}</td>
+          <td> -->
+            <!-- <a class="icon-eye" (click)="viewData(emp)">
+              <i class="fa-regular fa-eye"></i>
+            </a>
+            <a class="icon-edit" (click)="editData(emp)">
+              <i class="fa-solid fa-pen"></i>
+            </a>
+            <a class="icon-trash" (click)=" DeleteAlert(i)">
+              <i class="fa-solid fa-trash"></i>
+            </a> -->
+            <!-- <button class="btn btn-primary" type="button"" *ngIf="isUpdating">Update</button> -->
+          <!-- </td> -->
+        <!-- </tr> -->
+      </tbody>
+    </table>
+    </div>
