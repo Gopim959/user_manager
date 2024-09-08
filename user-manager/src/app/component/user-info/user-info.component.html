@@ -1,1 +1,21 @@
-<p>user-info works!</p>
+<div class="container-fluid">
+    <br>
+    <div class="cross">
+      <h4>
+        <i class="fa-solid fa-circle-info"></i>  User Details</h4>
+      <span type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </span>
+    </div>
+  
+  <p>Name: {{Viewusers.name}}</p>
+  <p>Mobile:{{Viewusers.mobile}}</p>
+  <p>Email:{{Viewusers.email}}</p>
+  </div>
+  
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    </div>
+   
+      
+  

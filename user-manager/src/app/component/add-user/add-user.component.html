@@ -1,189 +1,160 @@
 <div class="container-fluid">
 
     <div class="mb-2">
-
-        <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand">
-                <b class="text-white px-md-2">
-                    <span style="font-size: 46px;">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </span>
-                    Add User</b>
-            </a>
-            <!--   
+  
+      <nav class="navbar navbar-dark bg-primary">
+        <a *ngIf="!editData" class="navbar-brand">
+          <b class="text-white px-md-2">
+            <span style="font-size: 35px;">
+              <i class="fa-solid fa-user-plus"></i>
+            </span>
+            Add User</b>
+        </a>
+  
         <a *ngIf="editData" class="navbar-brand">
           <b class="text-white px-md-2">
-            <span style="font-size: 40px;">
+            <span style="font-size: 35px;">
               <i class="fa-solid fa-user-pen"></i>
             </span>
-            Edit Employee</b>
-        </a> -->
-
-            <!-- <span class="icon-button">
-                <i class="fa-regular fa-circle-left"></i>
-            </span> -->
-        </nav>
-        <br><br>
-
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm- col-md-8 col-lg-8 col-12">
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="name" class="col-form-label">Name
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                                    formControlName="name">
-                                <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)"
-                                    class="text-danger">
-                                    <div *ngIf="userForm.controls['name'].errors?.['required']">Name is required.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="mobile" class="col-form-label">Mobile
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <input type="text" (input)="validateMobileNumber($event)" name="mobile"
-                                    class="form-control" id="mobile" placeholder="Enter Mobile"
-                                    formControlName="mobile" />
-                                <div *ngIf="userForm.controls['mobile'].invalid && (userForm.controls['mobile'].dirty || userForm.controls['mobile'].touched)"
-                                    class="text-danger">
-                                    <div *ngIf="userForm.controls['mobile'].errors?.['required']">Mobile is required.
-                                    </div>
-                                    <div *ngIf="userForm.controls['mobile'].errors?.['pattern']">Invalid mobile number.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="email">Email
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="Enter Email" formControlName="email" />
-                                <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)"
-                                    class="text-danger">
-                                    <div *ngIf="userForm.controls['email'].errors?.['required']">Email is required.
-                                    </div>
-                                    <div *ngIf="userForm.controls['email'].errors?.['email']">Invalid email description.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="age">DOB
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <input type="date" name="dob" class="form-control" id="dob"
-                                    placeholder="Choose date of birth" formControlName="dob" />
-                                <div *ngIf="userForm.controls['dob'].invalid && (userForm.controls['dob'].dirty || userForm.controls['dob'].touched)"
-                                    class="text-danger">
-                                    <div *ngIf="userForm.controls['dob'].errors?.['required']">Date of birth is required
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="country">Gender
-                                    <span style="color: red;">*</span>
-                                </label>
-
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" checked value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">other</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="country">Image
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                <label for="country">country
-                                    <span style="color: red;">*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8 col-12">
-                                <select class="form-control" name="country" class="form-control" id="country"
-                                    formControlName="country">
-                                    <option selected disabled value="">Choose country </option>
-                                    <option>Trainee</option>
-                                    <option>Developer</option>
-                                    <option>QA Tester</option>
-                                    <option>Networking</option>
-                                    <option>Business Development</option>
-                                </select>
-                                <div *ngIf="userForm.controls['country'].invalid && (userForm.controls['country'].dirty || userForm.controls['country'].touched)"
-                                    class="text-danger">
-                                    <div *ngIf="userForm.controls['country'].errors?.['required']">country is
-                                        required.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-sm-2 col-md-2 col-lg-2 col-12">
-                                    <label for="country">Active
-                                    </label>
-                                </div>
-                                <div class="col-sm-8 col-md-8 col-lg-8 col-12 ">
-                                    <div class="form-check checkbox">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                            checked>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            Edit User</b>
+        </a>
+  
+        <span class="icon-button" (click)="back()">
+          <i class="fa-regular fa-circle-left"></i>
+        </span>
+      </nav>
+      <br><br>
+  
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm- col-md-8 col-lg-8 col-12">
+  
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="name" class="col-form-label">Name
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName="name">
+                    <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)"
+                      class="text-danger">
+                      <div *ngIf="userForm.controls['name'].errors?.['required']">Name is required.</div>
                     </div>
+                  </div>
                 </div>
-
-                <div class="col-sm-4 col-md-4 col-lg-4 col-12 d-flex align-items-start justify-content-end">
-                    <button class="btn btn-primary  me-3 mt-3" type="submit">submit</button>
-                    <!-- <button class="btn btn-success  me-3 mt-3">
-                    <i class="fa-solid fa-floppy-disk me-2"></i>Update</button> -->
-                    <button class="btn btn-danger  me-3 mt-3 back">
-                        Cancel</button>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="mobile" class="col-form-label">Mobile
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <input type="text" (input)="validateMobileNumber($event)" name="mobile" class="form-control" id="mobile"
+                      placeholder="Enter Mobile" formControlName="mobile" />
+                    <div *ngIf="userForm.controls['mobile'].invalid && (userForm.controls['mobile'].dirty || userForm.controls['mobile'].touched)"
+                      class="text-danger">
+                      <div *ngIf="userForm.controls['mobile'].errors?.['required']">Mobile is required.</div>
+                      <div *ngIf="userForm.controls['mobile'].errors?.['pattern']">Invalid mobile number.</div>
+                    </div>
+                  </div>
                 </div>
-
-                <!-- </form> -->
-            </div>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="email">Email
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email" />
+                    <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)"
+                      class="text-danger">
+                      <div *ngIf="userForm.controls['email'].errors?.['required']">Email is required.</div>
+                      <div *ngIf="userForm.controls['email'].errors?.['email']">Invalid email address.</div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="dob">DOB
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <input type="date" name="dob" class="form-control" id="dob" placeholder="Choose date of birth" formControlName="dob" />
+                    <div *ngIf="userForm.controls['dob'].invalid && (userForm.controls['dob'].dirty || userForm.controls['dob'].touched)"
+                      class="text-danger">
+                      <div *ngIf="userForm.controls['dob'].errors?.['required']">Date of birth is required.</div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="gender">Gender
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" value="male" formControlName="gender">
+                      <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" value="female" formControlName="gender">
+                      <label class="form-check-label">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" value="other" formControlName="gender">
+                      <label class="form-check-label">Other</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="country">Country
+                      <span style="color: red;">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <select class="form-control" name="country" id="country" formControlName="country">
+                      <option value="" disabled selected>Select Country</option>
+                      <option value="africa">Africa</option>
+                      <option value="india">India</option>
+                      <option value="pakistan">Pakistan</option>
+                      <option value="china">China</option>
+                    </select>
+                    
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-12">
+                    <label for="active">Active</label>
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8 col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="active" formControlName="active">
+                      <label class="form-check-label" for="active">Active</label>
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+          </div>
+  
+          <div class="col-sm-4 col-md-4 col-lg-4 col-12 d-flex align-items-start justify-content-end">
+            <button *ngIf="!editData" class="btn btn-primary  me-3 mt-3" type="submit">submit</button>
+            <button *ngIf="editData" class="btn btn-success  me-3 mt-3" (click)="updateData()">
+              <i class="fa-solid fa-floppy-disk me-2"></i>Update</button>
+            <button class="btn btn-danger  me-3 mt-3 back" (click)="back()">
+              Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>

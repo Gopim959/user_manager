@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-info',
@@ -8,5 +9,25 @@ import { Component } from '@angular/core';
   styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
+  @Input() Viewusers: any
+  activeModal: any;
+
+  constructor(
+    private modalService: NgbModal,
+  ) { }
+  ngOnInit() {
+   
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+  }
+  close(){
+    this.modalService.dismissAll();
+
+  }
+  
+  
+  
 
 }

@@ -1,3 +1,33 @@
 .checkbox{
     margin-top: 6px;
 }
+.btns {
+    justify-content: center;
+    align-items: center;
+  
+  
+  }
+  .btns {
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .icon-button i {
+    margin-right: 8px;
+    font-size: 30px;
+  }
+  
+  .icon-button:hover {
+    color: #121314;
+  }
+  

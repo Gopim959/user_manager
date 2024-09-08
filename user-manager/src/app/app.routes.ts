@@ -6,6 +6,9 @@ export const routes: Routes = [
     {path:'',component:AddUserComponent},
     {
         path:'user-list',component:UserListComponent
+    },
+    {
+        path:'add-user',component:AddUserComponent
     }
     
 ];
